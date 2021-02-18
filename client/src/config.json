@@ -1,0 +1,23 @@
+{
+  "apiUrl": "https://api.mediashuttle.com/v1",
+  "apiKey": "YOUR_MEDIA_SHUTTLE_API_KEY",
+  "portalReferrer": "YOUR_APP_URL",
+  "portalUrl": "YOUR_MEDIA_SHUTTLE_PORTAL_URL",
+  "userEmail": "USER_EMAIL_FOR_MS_LOGGING",
+  "grants": ["upload"],
+  "expirationSeconds": 2492000,
+  "path": "/path",
+  "files": [
+    {
+       "path": "example_video.mp4",
+       "isDirectory": false,
+       "size": 200000
+    },
+    {
+       "path": "directory",
+       "isDirectory": true,
+       "size": 0
+    }
+ ],
+ "webhook": "https://foo.com/api/redemption"
+}
