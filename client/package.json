@@ -14,7 +14,7 @@
     "eslint": "^8.35.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.2.1"
+    "@svgr/webpack": "^6.5.1"
   },
   "overrides": {
     "@svgr/webpack": "$@svgr/webpack"
@@ -26,7 +26,8 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-
+    "node": ">=16.14.0",
+    "npm": ">=8.3.1"
   },
   "eslintConfig": {
     "extends": "react-app"
