@@ -4,7 +4,8 @@ import axios from 'axios';
 import config from './config';
 import './App.css';
 
-const { apiKey, baseUrl, portalReferrer, userEmail, portalUrl } = config;
+const { apiKey, apiUrl, portalReferrer, userEmail, portalUrl } = config;
+const baseUrl = apiUrl;
 
 class App extends Component {
   state = {
@@ -77,10 +78,9 @@ class App extends Component {
       headers: { Authorization: apiKey }
     })
       .then(res => {
-        this.setState({ portalId: res.data.items[0].id })
-      })
-      .then(() => {
-        this.createPackage()
+        this.setState({ portalId: res.data.items[0].id }, () => {
+          this.createPackage()
+        });
       })
       .catch(err => {
       })
@@ -99,17 +99,15 @@ class App extends Component {
       }
     })
       .then(res => {
-        this.setState({ packageId: res.data.id })
+        this.setState({ packageId: res.data.id }, () => {
+            if (this.state.direction === 'download') {
+                this.deliverFiles()
+            } else {
+                this.requestFiles()
+            }
+        });
       })
-      .then(() => {
-        if (this.state.direction === 'download') {
-          this.deliverFiles()
-        } else {
-          this.requestFiles()
-        }
-      })
-      .catch(err => {
-      })
+      .catch(err => {})
   }
 
   requestFiles = () => {
